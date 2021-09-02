@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+
+html,
+body {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+@mixin global-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .app-content {
+    background-color: mat-color($background, background);
+  }
+  app-company-overview,
+  footer {
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+
+    a {
+      color: mat-color($primary, default-contrast);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+$default-theme: mat-dark-theme(
+  mat-palette($mat-purple),
+  mat-palette($mat-amber),
+  mat-palette($mat-red)
+);
+
+.default-theme {
+  @include angular-material-theme($default-theme);
+  @include global-theme($default-theme);
+}

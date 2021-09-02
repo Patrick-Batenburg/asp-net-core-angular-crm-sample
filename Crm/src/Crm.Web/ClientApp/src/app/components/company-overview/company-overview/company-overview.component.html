@@ -1,0 +1,18 @@
+<ng-container *ngFor="let company of companies; let i = index">
+  <mat-card>
+    <h1>{{company.name}}</h1>
+    <p>
+      <mat-icon svgIcon="location" aria-hidden="false" aria-label="Location icon"></mat-icon>
+      {{company.city}}, {{company.state}}, {{company.country}} - {{company.street}} {{company.zipCode}}
+    </p>
+    <br />
+
+    <h1>Active Vacancies & Job Descriptions:</h1>
+
+    <ng-container *ngFor="let vacancy of company.vacancies; let j = index">
+      <mat-divider></mat-divider>
+      <h2>{{vacancy.title}}</h2>
+      <p>{{vacancy.description}}</p>
+    </ng-container>
+  </mat-card>
+</ng-container>
